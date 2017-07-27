@@ -11,9 +11,9 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+# Data Visualization Project
+## Data-related job comparision for international applicants
+### Data from the US Department of Labor’s Office of Foreign Labor Certification
 
 - Bulleted
 - List
