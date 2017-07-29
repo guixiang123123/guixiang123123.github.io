@@ -1,0 +1,96 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {"url": "https://raw.githubusercontent.com/guixiang123123/guixiang123123.github.io/master/Salary_data.csv" },
+  "vconcat": [
+  {
+    "width": 480,
+    "height": 200,
+    "mark": "line",
+    "selection": {
+      "brush": {"type": "interval", "encodings": ["x"]}
+    },
+    "encoding": {
+      "x": {
+      "timeUnit": "yearmonth",
+      "field": "DECISION_DATE",
+      "type": "temporal",
+        "axis": {"format": "%Y", "labelAngle": 0}
+      },
+      "y": {
+      "aggregate": "count",
+      "field": "*",
+      "type": "quantitative",
+        "axis": {"tickCount": 3, "grid": false}
+      },
+          "color": {
+      "field": "JOB_TITLE_SUBGROUP",
+      "type": "nominal"
+    }
+    }
+  },
+  {
+    "width": 480,
+    "mark": "line",
+    "encoding": {
+      "x": {
+      "timeUnit": "yearmonthday",
+      "field": "DECISION_DATE",
+      "type": "temporal",
+        "scale": {"domain": {"selection": "brush"}},
+        "axis": {"title": "", "labelAngle": 0}
+      },
+      "y": {
+      "aggregate": "count",
+      "field": "*",
+      "type": "quantitative"
+        },
+            "color": {
+      "field": "JOB_TITLE_SUBGROUP",
+      "type": "nominal"
+    }
+    }
+  }, 
+{
+    "width": 480,
+    "mark": "bar",
+    "encoding": {
+      "x": {
+      "timeUnit": "yearmonth",
+      "field": "DECISION_DATE",
+      "type": "temporal",
+        "scale": {"domain": {"selection": "brush"}},
+        "axis": {"title": "", "labelAngle": 0}
+      },
+      "y": {
+      "aggregate": "median",
+      "field": "PAID_WAGE_PER_YEAR",
+      "type": "quantitative"
+        },
+            "color": {
+      "field": "JOB_TITLE_SUBGROUP",
+      "type": "nominal"
+    }
+    }
+  },
+
+{
+
+"mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth", "field": "date", "type": "temporal",
+      "scale": {"nice": "month"},
+      "axis": {"domain": false, "format": "%Y", "labelAngle": 0, "tickSize": 0}
+    },
+    "y": {
+      "aggregate": "sum", "field": "count","type": "quantitative",
+      "axis": null,
+      "stack": "center"
+    },
+    "color": {"field":"series", "type":"nominal", "scale":{"scheme": "category20b"}}
+  }
+}
+
+]
+}
