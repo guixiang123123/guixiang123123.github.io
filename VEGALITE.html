@@ -11,14 +11,41 @@
   <div id="vis-scatter"></div>
   <script>
     var vlSpec = {
-  		"$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  		"data": {"url": "https://raw.githubusercontent.com/vega/vega-datasets/gh-pages/data/cars.json"},
-  		"mark": "circle",
-  		"encoding": {
-    		"x": {"field": "Horsepower", "type": "quantitative"},
-    		"y": {"field": "Miles_per_Gallon", "type": "quantitative"}
-  		}
-		}
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {"url": "data/sp500.csv"},
+  "vconcat": [{
+    "width": 480,
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "scale": {"domain": {"selection": "brush"}},
+        "axis": {"title": "", "labelAngle": 0}
+      },
+      "y": {"field": "price","type": "quantitative"}
+    }
+  }, {
+    "width": 480,
+    "height": 60,
+    "mark": "area",
+    "selection": {
+      "brush": {"type": "interval", "encodings": ["x"]}
+    },
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "axis": {"format": "%Y", "labelAngle": 0}
+      },
+      "y": {
+        "field": "price",
+        "type": "quantitative",
+        "axis": {"tickCount": 3, "grid": false}
+      }
+    }
+  }]
+}
 
     var opt = {
       mode: "vega-lite",
