@@ -22,7 +22,7 @@
 }
 h4.pos {
     position: relative;
-    left: 730px;
+    left: 790px;
 }
 
 </style>
@@ -159,17 +159,20 @@ h4.pos {
       mode: "vega-lite",
       actions: false
     };
-    vega.embed("#vis-scatter_2", vlSpec_2, opt, function (error, result) {
-      var tooltipOption = {
-        showAllFields: false,
-        fields: [
-          { field: "JOB_TITLE_SUBGROUP" },
-          { field: "DECISION_DATE" },
-          { field: "CASE_NUMBER", title: "Applicant information" }
-        ]
-      };
-      vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);
-    });
+    var tooltipOption = {
+      showAllFields: false,
+      delay: 1000,
+      fields: [
+        { field: "JOB_TITLE_SUBGROUP", title: "Job" },
+        { field: "DECISION_DATE" },
+        { field: "CASE_NUMBER", title: "Applicant information" }
+      ]
+    };
+    vega.embed("#vis-scatter", vlSpec, opt).then(
+      function(result) {
+        vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);        
+      }
+    );
 
   </script>
 
