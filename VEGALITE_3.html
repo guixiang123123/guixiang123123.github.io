@@ -142,24 +142,7 @@ h4.pos {
       mode: "vega-lite",
       actions: false
     };
-    vega.embed("#vis-scatter", vlSpec_1, opt, function (error, result) {
-      var tooltipOption = {
-        showAllFields: false,
-        fields: [
-          { field: "JOB_TITLE_SUBGROUP" },
-          { field: "DECISION_DATE" },
-          { field: "CASE_NUMBER", title: "Applicant information" }
-        ]
-      };
-      vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);
-    });
-
-
-    var opt = {
-      mode: "vega-lite",
-      actions: false
-    };
-    var tooltipOption = {
+    var tooltipOption_1 = {
       showAllFields: false,
       delay: 1000,
       fields: [
@@ -168,9 +151,29 @@ h4.pos {
         { field: "CASE_NUMBER", title: "Applicant information" }
       ]
     };
-    vega.embed("#vis-scatter", vlSpec, opt).then(
+    vega.embed("#vis-scatter", vlSpec_1, opt).then(
       function(result) {
-        vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);        
+        vegaTooltip.vegaLite(result.view, vlSpec_1, tooltipOption_1);        
+      }
+    );
+
+
+    var opt = {
+      mode: "vega-lite",
+      actions: false
+    };
+    var tooltipOption_2 = {
+      showAllFields: false,
+      delay: 1000,
+      fields: [
+        { field: "JOB_TITLE_SUBGROUP", title: "Job" },
+        { field: "DECISION_DATE" },
+        { field: "CASE_NUMBER", title: "Applicant information" }
+      ]
+    };
+    vega.embed("#vis-scatter_2", vlSpec_2, opt).then(
+      function(result) {
+        vegaTooltip.vegaLite(result.view, vlSpec_2, tooltipOption_2);        
       }
     );
 
