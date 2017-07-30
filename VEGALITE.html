@@ -31,7 +31,7 @@
     positions which can be also selected along X axis using mouse. After creating a window from chart 1, it triggers more zoom-in 
     view showing 6 different job salary dynamics from 2012 to 2015 in chart 2. Bar chart 3 summarize the median wage among 6 different jobs.</h3>
 <a href="./VEGALITE_2.html" class="button">Previous</a>
-<a href="./VEGALITE_3.html" class="button">Next</a>
+<a href="./VEGALITE_3.html" class="button">Homepage</a>
   
   <div id="vis-scatter"></div>
 
@@ -109,17 +109,20 @@
       mode: "vega-lite",
       actions: false
     };
-    vega.embed("#vis-scatter", vlSpec, opt, function (error, result) {
-      var tooltipOption = {
-        showAllFields: false,
-        fields: [
-          { field: "JOB_TITLE_SUBGROUP" },
-          { field: "DECISION_DATE" },
-          { field: "CASE_NUMBER", title: "Applicant information" }
-        ]
-      };
-      vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);
-    });
+    var tooltipOption = {
+      showAllFields: false,
+      delay: 1000,
+      fields: [
+        { field: "JOB_TITLE_SUBGROUP", title: "Job" },
+        { field: "DECISION_DATE" },
+        { field: "CASE_NUMBER", title: "Applicant information" }
+      ]
+    };
+    vega.embed("#vis-scatter", vlSpec, opt).then(
+      function(result) {
+        vegaTooltip.vegaLite(result.view, vlSpec, tooltipOption);        
+      }
+    );
   </script>
 
 </body>
