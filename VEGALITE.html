@@ -30,7 +30,7 @@
 <h3> Scene 3 shows the timeline of those 6 jobs salaries change from 2012 to 2015, Chart 1 shows the overall median wage of those data-related job
     positions which can be also selected along X axis using mouse. After creating a window from chart 1, it triggers more zoom-in 
     view showing 6 different job salary dynamics from 2012 to 2015 in chart 2. Bar chart 3 summarize the median wage among 6 different jobs.</h3>
-<a href="./VEGALITE_3.html">Home Page</a>
+<a href="./VEGALITE.html" class="button">Next</a>
   
   <div id="vis-scatter"></div>
 
@@ -87,14 +87,18 @@
     }
   },
     {
-  "mark": "point",
   "width": 480,
-  "height": 180,
+  "height": 300,
+  "config": {"axis": {"titleFontSize": 20}},
+  "mark": "bar",
   "encoding": {
-    "x": {"field": "PAID_WAGE_PER_YEAR", "type": "quantitative","axis":{"title": "Wage per Year"}},
-    "y": {"field": "JOB_TITLE_SUBGROUP", "type": "nominal","axis":{"title": "Job Title"}},
-    "color": {"field": "JOB_TITLE_SUBGROUP", "type": "nominal","legend": { "title":"Job title"}}
-  }
+    "x": {"field": "JOB_TITLE_SUBGROUP", "type": "nominal","axis":{"title": "Job"}},
+    "y": {"aggregate" : "median", "field": "PAID_WAGE_PER_YEAR", "type": "quantitative","axis":{"titlePadding": 30,"title": "Wage per Year"}},
+    "color": {
+      "field": "JOB_TITLE_SUBGROUP",
+      "type": "nominal",
+      "legend": { "title":"Job title"}
+    }
 }
 ]
 }
